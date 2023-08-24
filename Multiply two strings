@@ -1,0 +1,8 @@
+#User function Template for python3
+
+class Solution:
+    def multiplyStrings(self,s1,s2):
+        m= int(s1) * int(s2)
+        return m
+        # code here
+        # return the product string
