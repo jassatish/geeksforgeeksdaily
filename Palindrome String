@@ -1,0 +1,8 @@
+class Solution:
+    def isPalindrome(self, S):
+        # code here
+        b=S[::-1]
+        if(b==S):
+            return("1")
+        else:
+            return("0")
