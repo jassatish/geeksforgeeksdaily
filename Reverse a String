@@ -1,0 +1,15 @@
+#User function Template for python3
+
+class Solution:
+    def reverseWord(self,s):
+        n=len(s)
+        result=[]
+        
+        for i in range(n-1, -1, -1):
+            
+            result.append(s[i])
+        rev_s="".join(result)
+        return rev_s
+            
+        
+        #your code here
