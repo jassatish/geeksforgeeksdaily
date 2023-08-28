@@ -1,0 +1,9 @@
+def removeDuplicates(head):
+    #code here
+    currNode=head
+    while currNode.next is not None:
+        if currNode.next.data is not None and currNode.next.data==currNode.data:
+            currNode.next=currNode.next.next
+        else:
+            currNode=currNode.next
+    return head
