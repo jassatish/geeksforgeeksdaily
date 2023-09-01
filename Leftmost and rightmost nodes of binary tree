@@ -1,0 +1,8 @@
+def printCorner(root):
+    
+    # print corner data, no need to print new line
+    # code here
+    l = [root]
+    while len(l)!=0 and root:
+        print(l[0].data,l[-1].data, end=' ') if len(l)>1 else print(l[0].data, end=' ')
+        l = [node for i in l for node in (i.left, i.right) if node is not None]
