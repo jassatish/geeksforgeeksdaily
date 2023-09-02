@@ -1,0 +1,25 @@
+class Solution:
+    def getCount(self,root,n):
+        #code here
+
+        leaf_costs = []
+        
+        def visit(node, cost=0):
+            cost += 1
+            if node.left == None and node.right==None:
+                leaf_costs.append(cost)    
+            if node.left != None:
+                visit(node.left, cost)
+            if node.right != None:
+                visit(node.right, cost)
+        if root:
+            visit(root)    
+        
+        leaf_costs.sort()
+        result = 0
+        cost = 0
+        for c in leaf_costs:
+            if cost+c <= n:
+                cost += c
+                result += 1
+        return result
