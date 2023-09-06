@@ -1,0 +1,27 @@
+
+class Solution:
+    def findMotherVertex(self, V, adj):
+        def dfs_util(v, visited):
+            visited[v] = True
+            for neighbor in adj[v]:
+                if not visited[neighbor]:
+                    dfs_util(neighbor, visited)
+        
+        # Initialize an array to track visited vertices.
+        visited = [False] * V
+        last_visited = -1  # Initialize the last visited vertex.
+
+        # Perform DFS starting from each vertex.
+        for v in range(V):
+            if not visited[v]:
+                dfs_util(v, visited)
+                last_visited = v
+
+        # Check if the last visited vertex covers all vertices.
+        visited = [False] * V
+        dfs_util(last_visited, visited)
+        if all(visited):
+            return last_visited
+        else:
+            return -1
+            
