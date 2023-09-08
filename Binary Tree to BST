@@ -1,0 +1,35 @@
+#User function Template for python3
+
+'''
+# Tree Node
+class Node:
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+'''
+class Solution:
+    # The given root is the root of the Binary Tree
+    # Return the root of the generated BST
+    def binaryTreeToBST(self, root):
+        # code here
+        def inorder(root,arr):
+            if root==None:
+                return 
+            inorder(root.left,arr)
+            arr.append(root.data)
+            inorder(root.right,arr)
+        arr=[]
+        inorder(root,arr)
+        arr.sort()
+        pre_index=0
+        def inorder1(root,arr):
+            nonlocal pre_index
+            if root==None:
+                return
+            inorder1(root.left,arr)
+            root.data=arr[pre_index]
+            pre_index+=1
+            inorder1(root.right,arr)
+        inorder1(root,arr)
+        return root
