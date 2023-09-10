@@ -1,0 +1,22 @@
+#User function Template for python3
+
+class Solution:
+    # Function to insert a node in a BST.
+    def insert(self, root, Key):
+        if root is None:
+            # Create a new node with the given Key
+            return Node(Key)
+
+        if Key < root.data:
+            # Recursively insert into the left subtree
+            root.left = self.insert(root.left, Key)
+
+        elif Key > root.data:
+            # Recursively insert into the right subtree
+            root.right = self.insert(root.right, Key)
+
+        return root
+
+# Driver Code
+if __name__ == "__main__":
+    t = int
