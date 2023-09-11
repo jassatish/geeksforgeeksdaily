@@ -1,0 +1,13 @@
+#User function Template for python3
+
+class Solution:
+    def isLucky(self, n):
+        def isLuckyHelper(n,counter):
+            if counter > n:
+                return 1
+            if n % counter == 0:
+                return 0
+            pos=n-n//counter
+            return isLuckyHelper(pos,counter+1)
+        return isLuckyHelper(n,2)
+        
