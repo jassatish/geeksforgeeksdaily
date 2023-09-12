@@ -1,0 +1,23 @@
+#User function Template for python3
+
+class Solution:
+    def isPerfectNumber(self, N: int) -> int:
+        # To store sum of divisors
+        sum = 1
+        
+        # Find all divisors and add them
+        i = 2
+        while i * i <= N:
+            if N % i == 0:
+                if i == N // i:
+                    sum += i
+                else:
+                    sum += i
+                    sum += N // i
+            i += 1
+        
+        # If the sum of divisors is equal to N and N is not 1, then N is a perfect number
+        if sum == N and N != 1:
+            return 1
+        else:
+            return 0
