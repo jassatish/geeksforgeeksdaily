@@ -1,0 +1,20 @@
+#User function Template for python3
+
+class Solution:
+    ##Complete this function
+    # Function to check if given number n is a power of two.
+    def isPowerofTwo(self,n):
+        ##Your code here
+        # Jai Sai Baba
+        # jai vinayaka
+        # jai vinayakudu
+        # jai vinayaka
+        # jai vinayakudu
+        res = 0
+        if n>0:
+            n = n&(n-1)
+            if n == 0:
+                return True
+        return False
+        #while(n):
+            
