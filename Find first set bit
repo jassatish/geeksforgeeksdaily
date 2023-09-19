@@ -1,0 +1,20 @@
+class Solution:
+    
+    #Function to find position of first set bit in the given number.
+    '''def getFirstSetBit(self,n):
+        #Your code here
+        ret=1
+        tmp=
+        while tmp<=n:
+            if tmp^n!=0:
+                return ret
+            tmp<<=1
+            ret+=1'''
+            
+    def getFirstSetBit(self,n):
+        #Your code here
+        n=bin(n)
+        for i in range(len(n)-1,1,-1):
+            if n[i]=="1":
+                return len(n)-i
+        return 0  
