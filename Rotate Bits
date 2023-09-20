@@ -1,0 +1,11 @@
+#User function Template for python3
+
+class Solution:
+    def rotate(self, N, D):
+        # code here
+         
+        D=D%16
+        binary_str = format(N, '016b')
+        leftrot = int((binary_str[D:] + binary_str[:D]),2)
+        rightrot = int((binary_str[-D:]+binary_str[:-D]),2)
+        return leftrot,rightrot
