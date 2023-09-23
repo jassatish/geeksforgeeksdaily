@@ -1,0 +1,16 @@
+# User function Template for python3
+
+class Solution:
+    # Complete this function
+    
+    #Function to find equilibrium point in the array.
+    def equilibriumPoint(self,A, N):
+        s = sum(A)
+        x = 0
+        for i in range(len(A)):
+            s-=A[i]
+            # print(x,s)
+            if x==s:
+                return i+1
+            x+=A[i]
+        return -1
