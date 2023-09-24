@@ -1,0 +1,32 @@
+#User function Template for python3
+
+
+#User function Template for python3
+from heapq import heappop, heappush, heapify
+class Solution:
+    def maxCombinations(self, n, k, a, b):
+        # Code here
+                # Code here
+ 
+        #take largest k elements of b using maxHeap
+        B = [-i for i in b]
+        heapify(B)
+        b=[]
+        for i in range(k):
+            b.append(abs(heappop(B)))
+#convert descending order to ascending
+        b=b[::-1] #contains only k elements
+
+        maxHeap = []
+        for i in a:
+            heappush(maxHeap, (-(i+b[k-1]),k-1))
+        result = []
+        while k and maxHeap:
+            summ, pos = abs(maxHeap[0][0]), maxHeap[0][1]
+            result.append(summ)
+            heappop(maxHeap)
+            if pos-1>=0:
+                heappush(maxHeap,(-(summ-b[pos]+b[pos-1]),pos-1))
+            k -= 1
+        return result
+
