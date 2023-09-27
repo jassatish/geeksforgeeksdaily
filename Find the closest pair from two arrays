@@ -1,0 +1,22 @@
+#User function Template for python3
+
+class Solution:
+def printClosest (self,arr, brr, n, m, x):
+        #code here
+        i=0
+        j=m-1
+        diff=100000000
+while i<n and j>=0:
+            asum= arr[i]+brr[j]
+            if abs(asum-x)<diff:
+                a=arr[i]
+                b=brr[j]
+                diff=abs(asum-x)
+            
+            if asum>x:
+                j-=1
+            else:
+                i+=1
+        return [a,b]
+            
+             
