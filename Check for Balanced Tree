@@ -1,0 +1,61 @@
+User function Template for python3
+
+
+'''class Node: 
+    # Constructor to create a new Node 
+    def __init__(self, data): 
+        self.data = data 
+        self.left = None
+        self.right = None'''
+
+
+#Function to check whether a binary tree is balanced or not.
+
+
+class Pair:
+    def __init__(self,first=False,second=0):
+        self.first=first
+        self.second=second
+        
+
+class Solution:
+    def height(self,root):
+        if(root ==None):
+            return 0
+        
+        left=self.height(root.left)
+        right=self.height(root.right)
+        
+        return max(left,right)+1
+        
+    def isBalancedFast(self,root):
+        p=Pair(True,0)
+        
+        if(root==None):
+            return p
+        
+        left=self.isBalancedFast(root.left)
+        right=self.isBalancedFast(root.right)
+        
+        leftAns=left.first
+        rightAns=right.first
+        diff=abs(left.second-right.second)<=1
+        
+        ans=Pair()
+        
+        ans.second=max(left.second,right.second)+1
+        
+        if(leftAns and rightAns and diff):
+            ans.first=True
+        else:
+            ans.first=False
+            
+        return ans
+        
+    def isBalanced(self,root):
+    
+        #add code here
+        
+        ans=self.isBalancedFast(root)
+        
+        return ans.first
