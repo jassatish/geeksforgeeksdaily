@@ -1,0 +1,29 @@
+#User function Template for python3
+from collections import deque
+class Solution:
+def transitiveClosure(self, N, graph):
+        # code here
+        ans = [[0 for _ in range(N)] for _ in range(N)]
+
+        def dfs(src):
+            visited = set()
+            stk = deque()
+            stk.append(src)
+            while stk:
+                cur_node = stk.pop()
+if cur_node in visited:
+                    continue
+                visited.add(cur_node)
+for nbr in range(N):
+if graph[cur_node][nbr] == 1:
+                        stk.append(nbr)
+
+            return visited
+
+for cur_node in range(N):
+            visited_nodes = dfs(cur_node)
+            for node in visited_nodes:
+                ans[cur_node][node] = 1
+
+        return ans
+
