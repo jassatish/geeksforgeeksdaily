@@ -1,0 +1,19 @@
+#User function Template for python3
+
+class Solution:
+def nodeLevel(self, V, adj, X):
+        q= [[0, 0]]
+        pos, len1 = 0, 1
+        visited = set()
+
+        while pos<len1:
+            top, level = q[pos]
+            visited.add(top)
+for i in adj[top]:
+                if i==X: return level+1
+elif i not in visited:
+                    q.append([i, level+1])
+                    len1+=1
+            pos+=1
+        return -1
+
