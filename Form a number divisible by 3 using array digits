@@ -1,0 +1,13 @@
+#User function Template for python3
+from itertools import permutations
+
+class Solution:
+def isPossible(self, N, arr):
+        # code here
+        sum = 0
+for item in arr:
+            while item:
+                sum += item % 10
+                item //= 10
+        
+        return 1 if sum % 3 == 0 else 0
