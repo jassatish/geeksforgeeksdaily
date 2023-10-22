@@ -1,0 +1,52 @@
+#User function Template for python3
+
+class Solution:
+    
+def rec(self, r,c, dp):
+if r==0 and c==0:
+            return 1
+        
+if r<0 or c<0:
+            return 0
+        
+        
+        if dp[r][c]!=-1:
+            return dp[r][c]
+        l = self.rec(r-1,c, dp)
+        u = self.rec(r,c-1, dp)
+        
+        dp[r][c] = (l+u) % 1000000007
+        return dp[r][c]
+        
+        
+def BE_(self, b, e, mod):
+        ans = 1
+        while e>0:
+if e % 2==1:
+                ans = (ans * b ) % mod
+            b = (b*b ) % mod
+            e = e//2
+        return ans
+        
+def numberOfPaths (self, M, N):
+        
+        n = M+N-2
+        r = min(M-1, N-1)
+        # print("n ",n, r)
+        mod = 1000000007
+        num = 1
+        deno = 1
+        ans = 1
+for i in range(1,r+1):
+            # ans = (ans * (n - i+1) ) %mod
+            # ans = (ans * self.BE_(i, mod-2, mod)) % mod
+            
+            num = (num * (n - i+1) ) %mod
+            deno = (deno * i) % mod
+mi = self.BE_(deno % mod, mod-2, mod)
+        # print("num ",num, deno)
+# deno = self.BE(deno % mod, mod-2)
+        # return ans % 1000000007
+        
+        return (num * mi) % mod
+        # return ans
