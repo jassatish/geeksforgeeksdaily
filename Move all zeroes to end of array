@@ -1,0 +1,16 @@
+
+class Solution:
+def pushZerosToEnd(self,arr, n):
+        x=[]
+        zcnt=0
+for ele in arr:
+            if ele==0:
+                zcnt+=1
+            else:
+                x.append(ele)
+for i in range(zcnt):
+            x.append(0)
+for i in range(n):
+            arr[i]=x[i]
+        return arr
+
