@@ -1,0 +1,16 @@
+class Solution:
+function to count the frequency of all elements from 1 to N in the array.
+def frequencyCount(self, a, n, P):
+        # code here
+        di = {}
+for i in a:
+if i in di:
+                di[i] += 1
+            else:
+                di[i] = 1
+for i in range(0,n):
+if i+1 in di:
+                a[i] = di[i+1]
+            else:
+                a[i] = 0
+
