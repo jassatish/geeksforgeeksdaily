@@ -1,0 +1,21 @@
+class Solution:
+def minDist(self, a, N, x, y):
+        li = []
+        ind = 0
+        indy = 0
+        fl = 0
+        fla = 0
+if (x not in a or y not in a):
+            return -1
+for i in range(0,n):
+if a[i] == x:
+                fl = 1
+                ind = i
+        
+if a[i] == y:
+                fla = 1
+                indy = i
+        
+            if fl ==1 and fla ==1:
+                li.append(abs(ind-indy))
+        return min(li)
