@@ -1,0 +1,7 @@
+class Solution:
+def transitionPoint(self, arr, n):
+for i in range(n):
+            if arr[i]==1:
+                return i
+        else:
+            return -1
