@@ -1,0 +1,10 @@
+class Solution:
+    
+def topK(self, nums, k):
+        from collections import Counter
+        #Code here
+        count_dict = Counter(nums)
+    
+        sorted_elements = sorted(count_dict.keys(), key=lambda x: (-count_dict[x],-x))
+        
+        return sorted_elements[:k]
