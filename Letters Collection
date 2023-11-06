@@ -1,0 +1,47 @@
+class Solution:
+    def issafe(self, i, j, n, m):
+        if i < 0 or j < 0 or i >= n or j >= m:
+            return False
+        return True
+
+    def query2(self, a, b, mat):
+        n = len(mat)
+        m = len(mat[0])
+
+        su = -mat[a][b]
+        for i in range(a - 2, a + 3):
+            for j in range(b - 2, b + 3):
+                if self.issafe(i, j, n, m):
+                    su += mat[i][j]
+
+        su -= self.query1(a, b, mat)
+
+        return su
+
+    def query1(self, a, b, mat):
+        n = len(mat)
+        m = len(mat[0])
+
+        su = -mat[a][b]
+        for i in range(a - 1, a + 2):
+            for j in range(b - 1, b + 2):
+                if self.issafe(i, j, n, m):
+                    su += mat[i][j]
+
+        return su
+
+    def matrixSum(self, n, m, mat, q, queries):
+        ans = []
+
+        for i in range(q):
+            if queries[i][0] == 1:
+                ans.append(self.query1(queries[i][1], queries[i][2], mat))
+            else:
+                ans.append(self.query2(queries[i][1], queries[i][2], mat))
+
+        return ans
+
+
+#PYTHON 
+#POTD SOLUTION(GFG)
+#6 Nov 2023
