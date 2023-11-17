@@ -1,0 +1,40 @@
+#User function Template for python3
+
+
+'''
+class Node:
+    def __init__(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+
+'''
+
+class Solution:
+def bTreeToClist(self, root):
+        def helper(cur):
+if cur is None:
+                return None, None
+
+            left_res = helper(cur.left)
+            right_res = helper(cur.right)
+
+            cur.left = left_res[1]
+            cur.right = right_res[0]
+
+            if left_res[1]:
+                left_res[1].right = cur
+            if right_res[0]:
+                right_res[0].left = cur
+
+            return left_res[0] if left_res[0] else cur, right_res[1] if right_res[1] else cur
+
+if root is None:
+            return None
+
+        result = helper(root)
+
+        result[0].left = result[1]
+        result[1].right = result[0]
+
+        return result[0]
