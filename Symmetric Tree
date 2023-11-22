@@ -1,0 +1,15 @@
+#User function Template for python3
+
+class Solution:
+    # return true or false, denoting whether the tree is Symmetric or not
+def isSymmetric(self, root):
+        # Your Code Here
+if not root:
+            return True
+        def fun(node1,node2):
+            if not node1 and not node2:
+                return True
+elif(not node1 or not node2) or (node1.data!=node2.data):
+                return False
+            return fun(node1.left,node2.right) and fun(node1.right,node2.left)
+        return fun(root.left,root.right)
