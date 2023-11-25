@@ -1,0 +1,9 @@
+class Solution:
+def shuffleArray(self, arr, n):
+        # Your code goes here
+        mod=max(arr)+1
+for i in range(n//2):
+            arr[i*2]=arr[i*2]%mod + (arr[i]%mod)*mod
+            arr[i*2+1]=arr[i*2+1]%mod + (arr[n//2+i]%mod)*mod
+for i in range(n):
+            arr[i]=arr[i]//mod
