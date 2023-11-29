@@ -1,0 +1,18 @@
+class Solution:
+def isEulerCircuitExist(self, V, adj):
+        # Code here
+        # eulerian circuit: return 2  (all nodes with even degree)
+        # eulerian path: return 1   (only two nodes with odd degree)
+        # else -> return 0    
+        even, odd = 0, 0
+for i in range(V):
+# The size of the sublists of the adj list is the degree of a node.
+            if len(adj[i]) % 2 == 0:
+                even += 1
+            else:
+                odd += 1
+if V == even:
+            return 2
+if odd == 2:
+            return 1
+        return 0
