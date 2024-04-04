@@ -1,0 +1,32 @@
+#Back-end complete function Template for Python 3
+
+class Solution:
+    #Function to find sum of all possible substrings of the given string.
+    def sumSubstrings(self,s):
+        
+        n = len(s) 
+        digits = []  
+        
+        #converting string into list of digits.
+        for char in s:
+            digits.append(int(char))
+    
+        #dp[] array to store sum till ith index.
+        dp = [0 for i in range(n)] 
+    
+        dp[0] = digits[0] 
+        res = dp[0] 
+        
+        #iterating over all the digits.
+        for i in range(1,n):
+            
+            #storing [current digit*(i+1)+dp[i-1]*10] at dp[i].
+            dp[i] = ((i+1)*digits[i]+(dp[i-1]*10))%1000000007 
+            
+            #res stores the sum of all values in dp[].
+            res+=dp[i] 
+            res%=1000000007;
+    
+        #returning the result.
+        return res
+    
