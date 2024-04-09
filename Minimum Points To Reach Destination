@@ -1,0 +1,32 @@
+
+class Solution:
+    def minPoints(self, M, N, points):
+        k=max(M,N)
+        dp=[[-1]*(k+1) for i in range(k+1)]
+        return self.helperFunction(points,M,N,0,0,dp)
+        
+    def helperFunction(self,points,M,N,x,y,dp):
+       
+        if(x == M - 1 and y == N - 1):
+            if points[x][y] <= 0:
+                return 1 + abs(points[x][y])
+            else:
+                return 1;
+     
+        if(x == M or y == N):
+            return float('inf');
+        if(dp[x][y] != -1):
+            return dp[x][y];
+
+        down = self.helperFunction(points, M, N, x + 1, y,dp);
+        left = self.helperFunction(points, M, N, x, y + 1,dp);
+        res = min(down, left) - points[x][y];
+        if res<=0:
+            dp[x][y]=1
+        else:
+            dp[x][y]=res
+            
+        return dp[x][y]
+
+
+
