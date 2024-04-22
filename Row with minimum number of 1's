@@ -1,0 +1,15 @@
+#User function Template for python3
+
+class Solution:
+    def minRow(self,n,m,a):
+        #code here
+        least=sum(a[0])
+        index=1
+        
+        for i in range(1,len(a)):
+            if sum(a[i])<least:
+                least=sum(a[i])
+                index=i+1
+            
+        return index
+
