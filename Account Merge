@@ -1,0 +1,39 @@
+from collections import defaultdict, deque
+class Solution:
+    def accountsMerge(self, accounts):
+        n= len(accounts)
+        def ret():
+            return []
+        edges= [[] for _ in range(n)]
+        
+        map= defaultdict(ret)
+        for i in range(n):
+            for j in range(1, len(accounts[i])):
+                map[accounts[i][j]].append(i)
+                if(len(map[accounts[i][j]]) > 1):
+                    edges[map[accounts[i][j]][0]].append(i)
+                    edges[i].append(map[accounts[i][j]][0])
+        
+        visited, val= [False for _ in range(n)], []
+        for i in range(n):
+            if(not visited[i]):
+                val.append([accounts[i][0]])
+                q= deque([i])
+                while(len(q)):
+                    temp= q.popleft()
+                    val[-1].extend(accounts[temp][1:])
+                    for j in edges[temp]:
+                        if(not visited[j]):
+                            q.append(j)
+                            visited[j]= True
+                            
+        ans= []
+        for i in range(len(val)):
+            temp= val[i][1:]
+            temp.sort()
+            ans.append([val[i][0]])
+            for j in range(len(temp)):
+                if(ans[-1][-1] != temp[j]):
+                    ans[-1].append(temp[j])
+        return ans
+
