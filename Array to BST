@@ -1,0 +1,14 @@
+#User function Template for python3
+class Solution:
+    def sortedArrayToBST(self, nums):
+        n = len(nums)
+        def solve(l,r):
+            if l > r:
+                return None
+            m = (l+r)//2
+            root = Node(nums[m])
+            root.left=solve(l,m-1)
+            root.right=solve(m+1,r)
+            return root
+        return solve(0,n-1)
+
