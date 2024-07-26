@@ -1,0 +1,21 @@
+#User function Template for python3
+class Solution:
+    def kPangram(self,string, k):
+        # code here
+        
+        string = ''.join([i for i in string if i!=" "])
+        n = len(string)
+        
+        if n<26:
+            return False
+            
+        s = set()
+        for i in string:
+            s.add(i)
+        # print(len(s))
+        
+        if abs(len(s)-26)<=k:
+            return True
+        else:
+            return False
+
