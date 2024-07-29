@@ -1,0 +1,14 @@
+#User function Template for python3
+class Solution:
+
+    def rowWithMax1s(self,arr):
+        # code here
+        idx = -1
+        sm = 0
+        for i in range(len(arr)):
+            s = sum(arr[i])
+            if sm<s:
+                sm = s
+                idx = i
+        return idx
+
