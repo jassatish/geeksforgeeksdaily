@@ -1,0 +1,29 @@
+class Solution:
+    def longestCommonPrefix(self, words):
+        
+        N = len(words)
+        
+        if N == 1:
+            return words[0]
+        
+        words = sorted(words, key = lambda x : len(x))
+           
+        s = words[0]
+        l = len(s)
+        
+        for i in range(1, N):
+            word = words[i]
+            
+            j = 0
+            while j < l:
+                if s[j] == word[j]:
+                    j += 1
+                else:
+                    l = j
+                    s = s[0:l]
+                    break
+        
+        if s == '':
+            return '-1'
+        
+        return s
