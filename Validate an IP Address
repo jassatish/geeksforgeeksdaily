@@ -1,0 +1,20 @@
+#User function Template for python3
+class Solution:
+    def isValid(self, s):
+        #code here
+        lst=list(s.split("."))
+        if len(lst)<4 or len(lst)>4:
+            return False
+        
+        for i in lst:
+            if i.isalnum()== False:
+                return False
+            if int(i)<0 or int(i)>255:
+                return False
+        for i in lst:
+            if i!='0' and len(i)!=len(str(int(i))):
+                return False
+        
+        return True
+
+
