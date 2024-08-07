@@ -1,0 +1,30 @@
+#User function Template for python3
+
+class Solution:
+    def kthElement(self, k, a, b):
+        
+        c=0
+        
+        i,j=0,0
+        n,m=len(a),len(b)
+        
+        while i<n and j<m:
+            
+            if a[i]<=b[j]:
+                c+=1
+                if c==k:
+                    return a[i]
+                i+=1
+                
+            else:
+                c+=1
+                if c==k:
+                    return b[j]
+                j+=1
+        rem=k-c
+        if i==n:
+            return b[j+rem-1]
+        else:
+            return a[i+rem-1]
+        
+
