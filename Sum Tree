@@ -1,0 +1,29 @@
+class Solution:
+    def is_sum_tree(self, node):
+        left_verd , left_val= self.solve(node.left)
+        right_verd , right_val = self.solve(node.right)
+        
+        if left_verd == 0 or right_verd == 0:
+            return 0
+        
+        if left_val+right_val != root.data:
+            return 0
+        
+        return 1
+    
+    def solve(self , root):
+        if root == None:
+            return (1 , 0)
+        
+        if root.left == None and root.right == None:
+            return (1 , root.data)
+        
+        left = self.solve(root.left)
+        right = self.solve(root.right)
+        
+        val = left[1] + right[1]
+        if left[0] == 0 or right[0] == 0:
+            return (0 , val+root.data)
+        if val == root.data:
+            return (1 , val+root.data)
+        return (0 , val+root.data)
