@@ -1,0 +1,45 @@
+#User function Template for python3
+'''
+class Job:
+    
+    # Job class which stores profit and deadline.
+    
+    def __init__(self,profit=0,deadline=0):
+        self.profit = profit
+        self.deadline = deadline
+        self.id = 0
+'''        
+
+class Solution:
+    
+    #Function to find the maximum profit and the number of jobs done.
+    def JobScheduling(self,Jobs,n):
+        
+        # code here
+        maxi=0
+        arr=[]
+        job_done=0
+        total=0
+        for i in range(n):
+            maxi=max(maxi,Jobs[i].deadline)
+        # print(maxi)
+        
+        result=[-1 for i in range(maxi)]
+        # print(result)
+        
+        for i in range(n):
+            arr.append([Jobs[i].profit,Jobs[i].deadline])
+            
+        arr.sort(reverse=True)
+        # print(arr)
+        
+        for i in range(n):
+            for j in range(arr[i][1]-1,-1,-1):
+                if result[j]==-1:
+                    result[j]=i
+                    job_done+=1
+                    total+=arr[i][0]
+                    break
+                    
+        return [job_done,total]
+
