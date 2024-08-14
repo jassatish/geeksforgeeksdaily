@@ -1,0 +1,43 @@
+#User function Template for python3
+
+class Solution:
+    def longestCommonSubstr(self, str1, str2):
+        # code here
+ # Lengths of the strings
+        len1 = len(str1)
+        len2 = len(str2)
+        
+        # Initialize the 2D table with all elements set to 0
+        dp = [[0] * (len2 + 1) for _ in range(len1 + 1)]
+        
+        # Variable to keep track of the maximum length of the common substring
+        maxLength = 0
+        
+        # Loop through each character in str1 and str2
+        for i in range(1, len1 + 1):
+            for j in range(1, len2 + 1):
+                # If characters match
+                if str1[i-1] == str2[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + 1
+                    # Update the maximum length found
+                    maxLength = max(maxLength, dp[i][j])
+                else:
+                    # No match, so reset to 0
+                    dp[i][j] = 0
+        
+        # Return the length of the longest common substring
+        return maxLength
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        S1 = input().strip()
+        S2 = input().strip()
+        ob = Solution()
+        print(ob.longestCommonSubstr(S1, S2))
+
+# } Driver Code Ends
