@@ -1,0 +1,42 @@
+#User function Template for python3
+
+from typing import List
+from collections import defaultdict, deque
+
+class Solution:
+    def findOrder(self, alien_dict: List[str], N: int, K: int) -> str:
+        # Your implementation here
+        # Step 1: Create a graph
+        graph = defaultdict(list)
+        indegree = {chr(i + ord('a')): 0 for i in range(K)}
+        
+        # Step 2: Build the graph by comparing adjacent words
+        for i in range(N - 1):
+            word1 = alien_dict[i]
+            word2 = alien_dict[i + 1]
+            min_length = min(len(word1), len(word2))
+            for j in range(min_length):
+                if word1[j] != word2[j]:
+                    graph[word1[j]].append(word2[j])
+                    indegree[word2[j]] += 1
+                    break
+        
+        # Step 3: Topological Sort using Kahn's Algorithm (BFS)
+        queue = deque([ch for ch in indegree if indegree[ch] == 0])
+        topo_order = []
+        
+        while queue:
+            node = queue.popleft()
+            topo_order.append(node)
+            for neighbor in graph[node]:
+                indegree[neighbor] -= 1
+                if indegree[neighbor] == 0:
+                    queue.append(neighbor)
+        
+        # Step 4: Check if topological sort is valid (i.e., all characters are included)
+        if len(topo_order) != K:
+            return ""
+        
+        return "".join(topo_order)
+
+
