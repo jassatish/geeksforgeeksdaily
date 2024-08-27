@@ -1,0 +1,52 @@
+class Solution:
+    def findMaxDiff(self, arr):
+        n = len(arr)
+        left_smaller_arr = [0]*n
+        right_smaller_arr = [0]*n
+        
+        
+        temp_arr = []
+        #fill left arr
+        for i in range(n):
+            curr_item = arr[i]
+            
+            if temp_arr:
+                while temp_arr and temp_arr[-1] >= curr_item:
+                    temp_arr.pop()
+                    
+                if temp_arr:
+                    left_smaller_arr[i] = temp_arr[-1]
+                else:
+                    left_smaller_arr[i] = 0
+                temp_arr.append(curr_item)
+
+            else:
+                temp_arr.append(curr_item)
+                left_smaller_arr[i] = 0
+                
+        temp_arr = []
+        for i in range(n-1, -1, -1):
+            curr_item = arr[i]
+            
+            if temp_arr:
+                while temp_arr and temp_arr[-1] >= curr_item:
+                    temp_arr.pop()
+                    
+                if temp_arr:
+                    right_smaller_arr[i] = temp_arr[-1]
+                else:
+                    right_smaller_arr[i] = 0
+                temp_arr.append(curr_item)
+
+            else:
+                temp_arr.append(curr_item)
+                right_smaller_arr[i] = 0
+                
+        max_item = float("-inf")
+        for i in range(n):
+            max_item = max(max_item, abs(left_smaller_arr[i] - right_smaller_arr[i]))
+        return max_item
+            
+
+
+
