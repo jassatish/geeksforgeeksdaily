@@ -1,0 +1,24 @@
+#User function Template for python3
+
+
+
+class Solution:
+    def find3Numbers(self, arr):
+        # Code Here
+        smallest = arr[0]
+        preSmallest = smallest
+        secSmallest = float('inf')
+        n = len(arr)
+        
+        for i in range(1, n):
+            if arr[i] > secSmallest:
+                return [preSmallest, secSmallest, arr[i]]
+            elif arr[i] < smallest:
+                smallest = arr[i]
+            elif arr[i] < secSmallest and arr[i] > preSmallest:
+                secSmallest = arr[i]
+            elif arr[i] > smallest:
+                preSmallest = smallest
+                secSmallest = arr[i]
+        
+        return []
