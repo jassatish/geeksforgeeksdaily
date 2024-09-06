@@ -1,0 +1,7 @@
+class Solution:
+    def maxSubArraySum(self,arr):
+        mc=mg=arr[0]
+        for x in arr[1:]:
+            mc=max(x,mc+x)
+            mg=max(mg,mc)
+        return mg
