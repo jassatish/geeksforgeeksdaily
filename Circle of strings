@@ -1,0 +1,37 @@
+#User function Template for python3
+
+from collections import defaultdict, deque
+
+class Solution:
+    def isCircle(self, arr):
+        def dfs(node, visited, graph):
+            stack = [node]
+            while stack:
+                curr = stack.pop()
+                for neighbor in graph[curr]:
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        stack.append(neighbor)
+
+        in_degree = defaultdict(int)
+        out_degree = defaultdict(int)
+        graph = defaultdict(list)
+
+        for word in arr:
+            start, end = word[0], word[-1]
+            graph[start].append(end)
+            out_degree[start] += 1
+            in_degree[end] += 1
+
+        for char in set(in_degree.keys()).union(set(out_degree.keys())):
+            if in_degree[char] != out_degree[char]:
+                return 0
+
+        visited = set()
+        dfs(arr[0][0], visited, graph)
+
+        for char in out_degree:
+            if char not in visited:
+                return 0
+        
+        return 1
