@@ -1,0 +1,30 @@
+class Solution:
+    def maxLength(self, S: str) -> int:
+        n = len(S)
+        open = close = 0
+        ans = 0
+
+        for i in range(n):
+            if S[i] == '(':
+                open += 1
+            else:
+                close += 1
+
+            if open == close:
+                ans = max(ans, open * 2)
+            elif close > open:
+                open = close = 0
+
+        open = close = 0
+        for i in range(n - 1, -1, -1):
+            if S[i] == '(':
+                open += 1
+            else:
+                close += 1
+
+            if open == close:
+                ans = max(ans, open * 2)
+            elif open > close:
+                open = close = 0
+
+        return ans
