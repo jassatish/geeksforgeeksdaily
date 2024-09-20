@@ -1,0 +1,14 @@
+#User function Template for python3
+
+class Solution:
+    # Returns count buildings that can see sunlight
+    def countBuildings(self, height):
+        # code here
+        l=len(height)
+        count=1
+        m=height[0]
+        for i in range(1,l):
+            if height[i]>m:
+                count+=1
+                m=height[i]
+        return count
