@@ -1,0 +1,35 @@
+#User function Template for python3
+
+class Solution:
+    
+    #Function to find maximum of each subarray of size k.
+    def max_of_subarrays(self,k,arr):
+        
+        
+        #code here
+        # Create a deque to store indices of array elements
+        dq = deque()
+        n = len(arr)
+        
+        # List to store the result (max for each subarray)
+        res = []
+        
+        for i in range(n):
+            # Remove elements from deque that are out of this window
+            if dq and dq[0] <= i - k:
+                dq.popleft()
+            
+            # Remove elements from the deque that are smaller than
+            # the current element (as they are useless)
+            while dq and arr[dq[-1]] < arr[i]:
+                dq.pop()
+            
+            # Add the current element index to the deque
+            dq.append(i)
+            
+            # Start adding maximum elements of each subarray to the result
+            if i >= k - 1:
+                res.append(arr[dq[0]])
+        
+        return res
+
