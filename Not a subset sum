@@ -1,0 +1,18 @@
+#User function Template for python3
+
+class Solution:
+    def findSmallest(self, arr):
+        # Initialize the result to 1 (the smallest positive integer we are looking for)
+        res = 1
+        
+        # Traverse the array and find the smallest number that cannot be represented
+        for num in arr:
+            # If current element is greater than res, we found the gap
+            if num > res:
+                return res
+            # Otherwise, add the current element to res (because we can form this sum)
+            res += num
+        
+        # If we finish the loop, return the final result
+        return res
+
