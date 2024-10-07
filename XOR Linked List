@@ -1,0 +1,16 @@
+#User function Template for python3
+def insert(head, val):
+    new_node = Node(val)
+    if head is None:
+        head = new_node
+    else:
+        new_node.npx = head
+        head = new_node
+    return head
+
+def getList(head):
+    elements = []
+    while head:
+        elements.append(head.data)
+        head = head.npx
+    return elements
