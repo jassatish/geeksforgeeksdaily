@@ -1,0 +1,12 @@
+class Solution:
+    def rearrange(self, ar):
+        n = len(ar)
+        # Create a new array initialized with -1
+        new_arr = [-1] * n
+        
+        # Place the values at their corresponding indices
+        for value in ar:
+            if 0 <= value < n:  # Only consider valid indices
+                new_arr[value] = value
+        
+        return new_arr
