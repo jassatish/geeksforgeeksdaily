@@ -1,0 +1,27 @@
+#User function Template for python3
+
+class Solution:
+    
+    #Complete this fuction
+    #Function to count the number of subarrays which adds to the given sum.
+    def subArraySum(self,arr, tar):
+        #Your code here
+        prefix_sum = 0  # Running sum of elements
+        count = 0  # Number of subarrays with the given sum
+        prefix_map = {0: 1}  # Initialize with 0 sum to handle cases where subarray starts from index 0
+    
+        for num in arr:
+            prefix_sum += num  # Update the prefix sum
+    
+            # Check if (prefix_sum - target) exists in the map
+            if prefix_sum - tar in prefix_map:
+                count += prefix_map[prefix_sum - tar]
+    
+            # Update the frequency of the current prefix sum
+            if prefix_sum in prefix_map:
+                prefix_map[prefix_sum] += 1
+            else:
+                prefix_map[prefix_sum] = 1
+    
+        return count
+        #Your code here
