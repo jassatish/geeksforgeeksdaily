@@ -1,0 +1,10 @@
+#User function Template for python3
+
+class Solution:
+    
+    def getSingle(self,arr):
+        result=0
+        for i in range(0,len(arr)):
+             result ^= arr[i];
+        return result
+
