@@ -1,0 +1,17 @@
+class Solution:
+    def countgroup(self, arr):
+        # Complete the function
+        ans = 0
+        # Step 1: Calculate the XOR of all elements in the array
+        for num in arr:
+            ans ^= num
+        
+        # Step 2: If the XOR of all elements is zero, calculate the number of valid splits
+        if ans == 0:
+            # (2^(len(arr) - 1)) - 1 gives the number of valid splits
+            return (2**(len(arr) - 1)) - 1
+        
+        # Step 3: If XOR is not zero, return 0 since no valid split is possible
+        return 0
+
+
