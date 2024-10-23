@@ -1,0 +1,25 @@
+#User function Template for python3
+
+'''
+# Node Class
+class Node:
+    def __init__(self, data):   # data -> value stored in node
+        self.data = data
+        self.next = None
+'''
+class Solution:
+    def sumOfLastN_Nodes(self, head, n):
+        first=head
+        second=head
+        for _ in range(n):
+            first=first.next
+        while first:
+            first=first.next
+            second=second.next
+        total_sum=0
+        while second:
+            total_sum+=second.data
+            second=second.next
+        return total_sum
+        #function should return sum of last n nodes
+
