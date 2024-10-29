@@ -1,0 +1,46 @@
+#User function Template for python3
+
+
+def quickSort(head):
+    if head is None or head.next is None:
+        return head
+
+    pivot = head
+    left_head = left_tail = None
+    right_head = right_tail = None
+
+    current = head.next
+    while current:
+        if current.data < pivot.data:
+            if left_head is None:
+                left_head = left_tail = current
+            else:
+                left_tail.next = current
+                left_tail = current
+        else:
+            if right_head is None:
+                right_head = right_tail = current
+            else:
+                right_tail.next = current
+                right_tail = current
+        current = current.next
+
+    if left_tail:
+        left_tail.next = None
+    if right_tail:
+        right_tail.next = None
+
+    left_sorted = quickSort(left_head)
+    right_sorted = quickSort(right_head)
+
+    if left_sorted:
+        tail = left_sorted
+        while tail.next:
+            tail = tail.next
+        tail.next = pivot
+    else:
+        left_sorted = pivot
+
+    pivot.next = right_sorted
+
+    return left_sorted
