@@ -1,0 +1,58 @@
+#User function Template for python3
+'''
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+'''
+class Solution:
+    #Function to insert a node in a sorted doubly linked list.
+    def sortedInsert(self, head, x):
+        #code here
+        if head==None:
+            return Node(x)
+        
+        if head.next==None:
+            if head.data>x:
+                n = Node(x)
+                n.next=head
+                head.prev=n
+                return n
+            else:
+                n = Node(x)
+                head.next = n
+                n.prev = head
+                return head
+        if x<head.data:
+            n = Node(x)
+            n.next=head
+            head.prev  = n
+            return n
+        
+        back=head
+        temp=head.next
+        
+        while temp:
+            if x<temp.data:
+                break
+            back=temp
+            temp = temp.next
+        
+        n = Node(x)
+        if temp==None:
+            back.next = n
+            n.prev = back
+            return head
+        
+        n.next = back.next
+        temp.prev = n
+        n.prev = back
+        back.next = n
+        return head
+        
+        
+
+
+
+
