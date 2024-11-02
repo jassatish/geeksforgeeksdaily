@@ -1,0 +1,27 @@
+#User function Template for python3
+class Solution:
+    def checkDuplicatesWithinK(self, arr, k):
+    #     # your code
+        
+        uniq=set()
+        n=len(arr)
+        l=0
+        r=0
+        while r<n:
+            
+            if arr[r] in uniq:
+                    return True
+            
+            if r<k:
+                uniq.add(arr[r])
+                r+=1
+                continue
+            
+            uniq.add(arr[r])
+            uniq.remove(arr[l])
+            
+            r+=1
+            l+=1
+            
+            # print(uniq)
+                
