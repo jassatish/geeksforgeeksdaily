@@ -1,0 +1,15 @@
+class Solution:
+    # Function to calculate the maximum profit
+    def maximumProfit(self, prices):
+        n = len(prices)
+        profit = 0
+        
+        # Iterate through the array and add profit whenever price increases
+        for i in range(1, n):
+            if prices[i] > prices[i - 1]:
+                profit += prices[i] - prices[i - 1]
+        
+        return profit
+
+
+
